@@ -1,3 +1,5 @@
 response_rev_figures/
 models/
 results/
+training_cifar/
+training_pmnist/
