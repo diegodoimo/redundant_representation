@@ -1,25 +1,28 @@
-
 import argparse
 import json
 import os
 import sys
 import requests
-from tqdm import tqdm
+import pathlib
+import zipfile
 
 def parse_arguments():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--download_dir", type=str, default="./models")
-    parser.add_argument("--model", default = 'densenet40', type=str, choices=["densnet40"])
+    parser.add_argument("--path", type=str, default="./data")
     args = parser.parse_args()
-    print("input args:\n", json.dumps(vars(args), indent=4, separators=(",", ":")))
     return args
 
-    urls = ['https://figshare.com/ndownloader/files/37506373']
-
+def main(args):
+    print('')
+    urls = ['https://figshare.com/ndownloader/articles/21153040/versions/2']
+    pathlib.Path(f'{args.path}').mkdir(parents=True, exist_ok=True)
     for url in urls:
         r = requests.get(url, stream=True)
-        with open(f"{args.download_dir}/{filename}", "wb") as f:
+        with open(f"{args.path}/download_repr.zip", "wb") as f:
             f.write(r.content)
+
+    with zipfile.ZipFile(f"{args.path}/download_repr.zip", 'r') as zip_ref:
+        zip_ref.extractall(f"{args.path}/download_repr")
 
 if __name__ == "__main__":
     args = parse_arguments()

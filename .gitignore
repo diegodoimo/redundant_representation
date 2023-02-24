@@ -3,3 +3,4 @@ models/
 results/
 training_cifar/
 training_pmnist/
+data/
