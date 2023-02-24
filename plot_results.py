@@ -147,7 +147,7 @@ ax.set_xticklabels(wr2)
 gs2.tight_layout(fig, rect = [0.67, 0., 1, 0.97])
 
 pathlib.Path('./plots').mkdir(parents=True, exist_ok=True)
-plt.savefig('./plots/cifar10_wr28_plots.pdf', dpi = 200)
+plt.savefig('./plots/cifar10_wr28_plots.png', dpi = 200)
 
 
 #*******************************************************************************
