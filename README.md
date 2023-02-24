@@ -42,7 +42,7 @@ The code above allows to reproduce the the figures 3.b, 4.b and 4.e of the paper
 
 ![Alt text](plots/cifar10_wr28_plots.jpg)
 
-more data will be added soon
+More data will be added soon...
 
 
 ## Train the netowork from scrutch and estract the representations
