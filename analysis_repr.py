@@ -74,6 +74,8 @@ def compute_r2_chunk(n_trials, features, w, compute_sym=False, norm = 'mean'):
 parser = argparse.ArgumentParser()
 parser.add_argument('--path', metavar='DIR', default = './data')
 parser.add_argument('--dataset', metavar='DIR', default = 'cifar10')
+parser.add_argument('--r2_rep', type = int, default = 40)
+parser.add_argument('--acc_rep', type = int , default = 100)
 args = parser.parse_args()
 
 #*******************************************************************************
@@ -109,11 +111,11 @@ acc_train = []
 acc_test = []
 print(f'evaluating accuracy chunks')
 for c in chunk_size:
-    acc_, loss_  = compute_accuracy_chunk(n_trials=100, chunk_size=c, features=features_test,
+    acc_, loss_  = compute_accuracy_chunk(n_trials=args.acc_rep, chunk_size=c, features=features_test,
                                 weights=weights, bias=bias, targets=targets_test, criterion=criterion)
     acc_test.append(np.mean(acc_))
 
-    acc_, loss_  = compute_accuracy_chunk(n_trials=100, chunk_size=c, features=features_train,
+    acc_, loss_  = compute_accuracy_chunk(n_trials=args.acc_rep, chunk_size=c, features=features_train,
                                 weights=weights, bias=bias, targets=targets_train, criterion=criterion)
     acc_train.append(np.mean(acc_))
 
@@ -131,7 +133,7 @@ r2 = []
 mean_corr = []
 print(f'evaluating r2 chunks')
 for c in chunk_size:
-    r2_, mean_corr_ = compute_r2_chunk(n_trials=40, features=features_test, w=c, compute_sym=False, norm = 'mean')
+    r2_, mean_corr_ = compute_r2_chunk(n_trials=args.r2_rep, features=features_test, w=c, compute_sym=False, norm = 'mean')
     r2.append(np.mean(r2_))
     mean_corr.append(np.mean(mean_corr_))
 r2 = np.array([chunk_size, np.array(r2)])
