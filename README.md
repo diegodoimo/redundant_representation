@@ -30,7 +30,7 @@ Download the representations of the second-to-last layer of Wide-ResNet28_8 __tr
 python download.py 
 ```
 
-The _analysis_repr.py_ script allows to:
+Given the representations in the './data/download_repr' folder, the _analysis_repr.py_ script allows to:
 * compute the test error of the chuncks (Fig. 3.b); 
 * compute the training error of the chunks (Fig. 4.b);
 * compute the $R^2$ coefficient of fit of the chunks to the full-layer representation and their 'mean correlation' (Fig. 4.e). 
@@ -50,7 +50,7 @@ python plot_results.py
 
 ![Alt text](plots/cifar10_wr28_plots.jpg)
 
-## Train the netowork from scratch and estract the representations (by default on a gpu)
+## Train the network from scratch and extract the representations (by default on a gpu)
 
 ```
 python train_cifar_wide.py --data cifar10 --net_name wide_resnet28 --widening_factor 8 --epochs 200 --results_path ./models
