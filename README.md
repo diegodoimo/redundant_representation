@@ -9,13 +9,17 @@ published at NeurIPS 35
 
 ## Install
 
-You can get miniconda from https://docs.conda.io/en/latest/miniconda.html, or install the dependencies shown below manually.
+You can get miniconda from https://docs.conda.io/en/latest/miniconda.html. Then install the dependencies shown below manually.
 
 ```
 conda create -n redundant_repr                                #create empy environment named "redundant_repr"
 conda activate redundant_repr
 conda install python numpy matplotlib seaborn scikit-learn    #install relevant python packages
 conda install pytorch cpuonly -c pytorch          
+```
+Alternatively you can create the environment with all the required dependencies through the .yml file by typing:
+```
+conda env create -f redundant_repr.yml
 ```
 
 ## Download data and reproduce plots of CIFAR10 on Wide-ResNet28_8
