@@ -99,7 +99,7 @@ parser.add_argument('--seed', default=None, type=int)
 parser.add_argument('--workers', default=4, type=int)
 
 parser.add_argument('--save_checkpoint', action='store_true')
-parser.add_argument('--results_path', metavar = 'DIR', default = './models/trials')
+parser.add_argument('--results_path', metavar = 'DIR', default = './models')
 parser.add_argument('--resume_folder', metavar = 'DIR', default = None)
 parser.add_argument('--resume_filename', metavar = 'DIR', default = None)
 parser.add_argument('--filename')
