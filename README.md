@@ -24,7 +24,7 @@ conda env create -f redundant_repr.yml
 
 ## Download data and reproduce plots of CIFAR10 on Wide-ResNet28_8
 
-Download the CIFAR10 representations of the second-to-last layer of Wide-ResNet28_8. The data is saved in "./data/download_repr":
+Download the representations of the second-to-last layer of Wide-ResNet28_8 __trained__ on CIFAR10. The data is saved in "./data/download_repr":
 
 ```
 python download.py 
