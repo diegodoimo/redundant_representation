@@ -74,7 +74,7 @@ def validate(loader, model, criterion, amp_autocast=suppress):
 #*******************************************************************************
 parser = argparse.ArgumentParser()
 parser.add_argument('--data', default = 'cifar10', metavar='DIR')
-parser.add_argument('--data_path', metavar='DIR', default ='.')#'/home/diego/ricerca/datasets'
+parser.add_argument('--data_path', metavar='DIR', default = '/home/diego/ricerca/datasets')
 
 parser.add_argument('--net_name', default = 'wide_resnet16',)
 parser.add_argument('--epochs', default=5, type=int)
@@ -174,10 +174,10 @@ elif args.net_name.startswith('wide_resnet'):
     else:
         model_name = f'{args.net_name}_{args.widening_factor}'
 
-model = model.to('cuda')
+device = 'cuda'
+model = model.to(device)
 #*******************************************************************************
 criterion = ut.LabelSmoothingCrossEntropy(smoothing =args.ls_magnitude)
-
 #-------------------------------------
 #automatic mixed precision training
 amp_autocast = suppress
