@@ -38,13 +38,10 @@ python plot_results.py
 ```
 
 ## Figures of  CIFAR10 on Wide-ResNet28-8
-The code above allows to reproduce the the figures 3.b, 4.b and 4.e of the paper. The profiles can be made smoother by increasing the number of chunks on which the statistics are computed. The plots are shown below:
+The code above allows to reproduce the the figures 3.b, 4.b and 4.e of the paper. The profiles can be made smoother by increasing the number of repetitions (with --r2_rep --acc_rep) on which the statistics are computed. The plots are shown below:
 
 ![Alt text](plots/cifar10_wr28_plots.jpg)
 
-More data will be added soon...
-
-
-## Train the netowork from scrutch and estract the representations
+## Train the netowork from scratch and estract the representations
 
 ### _This part of repository is under development_
