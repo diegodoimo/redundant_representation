@@ -53,6 +53,6 @@ python plot_results.py
 ## Train the netowork from scratch and estract the representations (by default on a gpu)
 
 ```
-python train_cifar_wide.py --net_name wide_resnet28 --widening_factor 8 --epochs 200 
+python train_cifar_wide.py --data cifar10 --net_name wide_resnet28 --widening_factor 8 --epochs 200 --results_path ./models
 ```
 
