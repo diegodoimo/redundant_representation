@@ -17,7 +17,7 @@ conda activate redundant_repr
 conda install python numpy matplotlib seaborn scikit-learn    #install relevant python packages
 conda install pytorch cpuonly -c pytorch          
 ```
-Alternatively, you can create the environment with all the required dependencies through the .yml file by typing:
+Alternatively, you can create the environment with all the required dependencies through the .yml file (this environment has Pytorch with cuda interface intalled) by typing:
 ```
 conda env create -f redundant_repr.yml
 ```
@@ -50,6 +50,9 @@ python plot_results.py
 
 ![Alt text](plots/cifar10_wr28_plots.jpg)
 
-## Train the netowork from scratch and estract the representations
+## Train the netowork from scratch and estract the representations (by default on a gpu)
 
-### _This part of repository is under development_
+```
+python train_cifar_wide.py --net_name wide_resnet28 --widening_factor 8 --epochs 200 
+```
+
