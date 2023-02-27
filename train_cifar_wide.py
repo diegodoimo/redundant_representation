@@ -14,7 +14,7 @@ from utils.densenet import  densenet40
 import utils.my_utils as ut
 
 #*******************************************************************************
-def train(loader, model, criterion, optimizer, epoch = None, scheduler = None, amp_autocast=suppress, loss_scaler=None,):
+def train(loader, model, criterion, optimizer, device, epoch = None, scheduler = None, amp_autocast=suppress, loss_scaler=None,):
 
     second_order = False
 
@@ -49,7 +49,7 @@ def train(loader, model, criterion, optimizer, epoch = None, scheduler = None, a
 
     return 1.0*correct/total, tr_loss/total
 
-def validate(loader, model, criterion, amp_autocast=suppress):
+def validate(loader, model, criterion, device, amp_autocast=suppress):
 
     model.eval()
     val_loss = 0
@@ -74,7 +74,7 @@ def validate(loader, model, criterion, amp_autocast=suppress):
 #*******************************************************************************
 parser = argparse.ArgumentParser()
 parser.add_argument('--data', default = 'cifar10', metavar='DIR')
-parser.add_argument('--data_path', metavar='DIR', default = '/home/diego/ricerca/datasets')
+parser.add_argument('--data_path', metavar='DIR', default ='.')#'/home/diego/ricerca/datasets'
 
 parser.add_argument('--net_name', default = 'wide_resnet16',)
 parser.add_argument('--epochs', default=5, type=int)
@@ -99,7 +99,7 @@ parser.add_argument('--seed', default=None, type=int)
 parser.add_argument('--workers', default=4, type=int)
 
 parser.add_argument('--save_checkpoint', action='store_true')
-parser.add_argument('--results_path', metavar = 'DIR', default = './models/trials')
+parser.add_argument('--results_path', metavar = 'DIR', default = './models')
 parser.add_argument('--resume_folder', metavar = 'DIR', default = None)
 parser.add_argument('--resume_filename', metavar = 'DIR', default = None)
 parser.add_argument('--filename')
@@ -178,6 +178,7 @@ device = 'cuda'
 model = model.to(device)
 #*******************************************************************************
 criterion = ut.LabelSmoothingCrossEntropy(smoothing =args.ls_magnitude)
+
 #-------------------------------------
 #automatic mixed precision training
 amp_autocast = suppress
@@ -217,11 +218,11 @@ for epoch in range(args.start_epoch, args.epochs):
     print(f'epoch {epoch+1}/{args.epochs}')
 
     start = time.time()
-    acc1_tr, loss_tr = train(train_loader, model, criterion, optimizer, epoch, scheduler, amp_autocast, loss_scaler)
+    acc1_tr, loss_tr = train(train_loader, model, criterion, optimizer, device, epoch, scheduler, amp_autocast, loss_scaler)
     current_time = time.time()-start
     print(f'tr_acc = {acc1_tr: .5f},  tr_loss = {loss_tr: .5f}; time = {current_time} ')
 
-    acc1_val, loss_val = validate(val_loader, model, criterion, amp_autocast)
+    acc1_val, loss_val = validate(val_loader, model, criterion, device, amp_autocast)
     tot_time += time.time()-start
     print(f'val_acc = {acc1_val: .5f}, val_loss =  {loss_val: .5f}; total_time = {tot_time}')
 
