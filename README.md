@@ -17,7 +17,7 @@ conda activate redundant_repr
 conda install python numpy matplotlib seaborn scikit-learn    #install relevant python packages
 conda install pytorch cpuonly -c pytorch          
 ```
-Alternatively you can create the environment with all the required dependencies through the .yml file by typing:
+Alternatively, you can create the environment with all the required dependencies through the .yml file by typing:
 ```
 conda env create -f redundant_repr.yml
 ```
@@ -30,7 +30,12 @@ Download the CIFAR10 representations of the second-to-last layer of Wide-ResNet2
 python download.py 
 ```
 
-Compute the test/training error of the chuncks, the R^2 coefficient of fit of the chunks to the full-layer representation, and the mean correlation of the chunks. The results are saved in "./data/results". The '--r2_rep' and '--acc_rep' arguments allow to set the number of chunks on which the r2/mean_corr and accuracies are averaged:
+The _analysis_repr.py_ script allows to:
+* compute the test error of the chuncks (Fig. 3.b); 
+* compute the training error of the chunks (Fig. 4.b);
+* compute the $R^2$ coefficient of fit of the chunks to the full-layer representation and their 'mean correlation' (Fig. 4.e). 
+
+The results are saved in "./data/results". The '--r2_rep' and '--acc_rep' arguments allow to set the number of chunks on which the r2/mean_corr and accuracies are averaged. The profiles of the figures shown below can be made smoother by increasing the number of repetitions (with --r2_rep --acc_rep) on which the statistics are computed:
 
 ```
 python analysis_repr.py --r2_rep 40 
@@ -42,7 +47,6 @@ python plot_results.py
 ```
 
 ## Figures of  CIFAR10 on Wide-ResNet28-8
-The code above allows to reproduce the the figures 3.b, 4.b and 4.e of the paper. The profiles can be made smoother by increasing the number of repetitions (with --r2_rep --acc_rep) on which the statistics are computed. The plots are shown below:
 
 ![Alt text](plots/cifar10_wr28_plots.jpg)
 
