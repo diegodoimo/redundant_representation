@@ -1,6 +1,6 @@
 # Redundant representation help generalization
 
-Source code of the paper [Redundant represenatation help generalization in wide neural networks](https://arxiv.org/abs/2106.03485). This work has been included in the [NeurIPS 35 Proceedings](https://papers.nips.cc/paper_files/paper/2022/hash/7c3a8d20ceadb7c519e9ac1bb77a15ff-Abstract-Conference.html)
+Source code of the paper [Redundant represenatation help generalization in wide neural networks](https://arxiv.org/abs/2106.03485). This work has been included in the [NeurIPS 35 Proceedings](https://papers.nips.cc/paper_files/paper/2022/hash/7c3a8d20ceadb7c519e9ac1bb77a15ff-Abstract-Conference.html).
 
 
 ## Platforms:
