@@ -1,11 +1,10 @@
 # Redundant representation help generalization
 
-Source code of the paper [Redundant represenatation help generalization in wide neural networks](https://openreview.net/pdf?id=lC5-Ty_0FiN)
-published at NeurIPS 35 
+Source code of the paper [Redundant represenatation help generalization in wide neural networks](https://arxiv.org/abs/2106.03485). This work has been included in the [NeurIPS 35 Proceedings](https://papers.nips.cc/paper_files/paper/2022/hash/7c3a8d20ceadb7c519e9ac1bb77a15ff-Abstract-Conference.html)
 
 
 ## Platforms:
-- Ubuntu 22.04
+Ubuntu 22.04
 
 ## Install
 
@@ -21,6 +20,7 @@ Alternatively, you can create the environment with all the required dependencies
 ```
 conda env create -f redundant_repr.yml
 ```
+<br>
 
 ## Download data and reproduce plots of CIFAR10 on Wide-ResNet28_8
 
@@ -45,10 +45,13 @@ Plot the results. The plots are saved in "./plots":
 ```
 python plot_results.py
 ```
+<br>
 
 ## Figures of  CIFAR10 on Wide-ResNet28-8
 
 ![Alt text](plots/cifar10_wr28_plots.jpg)
+
+<br>
 
 ## Train the network from scratch and extract the representations (by default on a gpu)
 
